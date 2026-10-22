@@ -1,0 +1,206 @@
+---
+const services = [
+    {
+        title: "توسعه سامانه‌های اختصاصی",
+        description:
+            "طراحی و پیاده‌سازی نرم‌افزارهایی متناسب با نیازهای واقعی کسب‌وکارها و سازمان‌ها؛ از پنل‌های مدیریتی و سامانه‌های عملیاتی تا سیستم‌هایی که فرایندهای خاص هر مجموعه را پوشش می‌دهند.",
+        icon: "layers",
+    },
+    {
+        title: "تحلیل مسئله و طراحی راهکار",
+        description:
+            "بررسی نیازها و فرایندهای فعلی، شناسایی مشکلات و تبدیل ایده‌ها به راهکارهای نرم‌افزاری قابل اجرا؛ با تمرکز بر کاربرد واقعی، کاهش پیچیدگی و انتخاب مسیر مناسب توسعه.",
+        icon: "lightbulb",
+    },
+    {
+        title: "خودکارسازی و یکپارچه‌سازی",
+        description:
+            "کاهش فعالیت‌های دستی و تکراری از طریق خودکارسازی فرایندها، اتصال نرم‌افزارها و سرویس‌های مختلف و ایجاد گردش کار منسجم برای افزایش دقت و سرعت عملیات.",
+        icon: "workflow",
+    },
+    {
+        title: "توسعه و بهبود نرم‌افزارهای موجود",
+        description:
+            "افزودن قابلیت‌های جدید، اصلاح مشکلات و بهبود ساختار سامانه‌های فعلی؛ با هدف پاسخ‌گویی به نیازهای تازه، نگهداری آسان‌تر و فراهم‌کردن امکان توسعه در آینده.",
+        icon: "code",
+    },
+];
+---
+
+<section
+    id="services"
+    class="bg-(--bg-primary) py-15 transition-colors duration-500"
+    dir="rtl"
+>
+    <div class="container mx-auto px-6">
+        <div class="mx-auto">
+            <h2
+                class="mb-4 text-3xl font-black tracking-tight text-(--text-primary) md:text-4xl"
+            >
+                از ایده تا توسعه و پشتیبانی نرم‌افزار
+            </h2>
+
+            <div class="h-1.5 w-20 rounded-full bg-orange-500"></div>
+
+            <div
+                class="mt-6 space-y-4 text-base leading-8 text-(--text-secondary)"
+            >
+                <p>
+                    توسعه یک نرم‌افزار موفق فقط به نوشتن کد محدود نمی‌شود؛ شناخت
+                    دقیق نیازها، انتخاب راهکار فنی مناسب، طراحی ساختار سیستم و
+                    توجه به امنیت، کارایی و قابلیت توسعه، همگی در نتیجه نهایی
+                    نقش دارند.
+                </p>
+
+                <p>
+                    با تجربه در توسعه بک‌اند، طراحی پایگاه داده، پیاده‌سازی API
+                    و ساخت پنل‌های مدیریتی و سامانه‌های اختصاصی، می‌توانم مراحل
+                    مختلف یک پروژه را از بررسی اولیه و طراحی راهکار تا
+                    پیاده‌سازی و راه‌اندازی دنبال کنم.
+                </p>
+
+                <p>
+                    همکاری با من به تحویل نسخه اولیه نرم‌افزار ختم نمی‌شود. پس
+                    از راه‌اندازی نیز می‌توان برای نگهداری، رفع مشکلات، بهبود
+                    عملکرد و افزودن قابلیت‌های جدید روی ادامه همکاری حساب کرد؛
+                    تا با تغییر نیازهای کسب‌وکار، نرم‌افزار هم متناسب با آن‌ها
+                    رشد کند.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            {
+                services.map((service) => (
+                    <article class="group rounded-2xl border border-(--text-secondary)/10 bg-(--bg-secondary) p-6 transition duration-300 hover:-translate-y-1 hover:border-orange-500/40 sm:p-7">
+                        <div class="mb-5 flex size-12 items-center justify-center rounded-xl border border-orange-500/20 bg-orange-500/10 text-orange-500 transition duration-300 group-hover:bg-orange-500 group-hover:text-white">
+                            {service.icon === "layers" && (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="size-6"
+                                    aria-hidden="true"
+                                >
+                                    <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+                                    <path d="m3 12 9 5 9-5" />
+                                    <path d="m3 16 9 5 9-5" />
+                                </svg>
+                            )}
+
+                            {service.icon === "lightbulb" && (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="size-6"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M9 18h6" />
+                                    <path d="M10 22h4" />
+                                    <path d="M8.5 14.5A7 7 0 1 1 15.5 14.5c-1 .8-1.5 1.6-1.5 2.5h-4c0-.9-.5-1.7-1.5-2.5Z" />
+                                </svg>
+                            )}
+
+                            {service.icon === "workflow" && (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="size-6"
+                                    aria-hidden="true"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="3"
+                                        width="7"
+                                        height="6"
+                                        rx="1.5"
+                                    />
+                                    <rect
+                                        x="14"
+                                        y="15"
+                                        width="7"
+                                        height="6"
+                                        rx="1.5"
+                                    />
+                                    <rect
+                                        x="14"
+                                        y="3"
+                                        width="7"
+                                        height="6"
+                                        rx="1.5"
+                                    />
+                                    <path d="M6.5 9v3h11V9" />
+                                    <path d="M17.5 12v3" />
+                                </svg>
+                            )}
+
+                            {service.icon === "code" && (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="size-6"
+                                    aria-hidden="true"
+                                >
+                                    <path d="m8 8-4 4 4 4" />
+                                    <path d="m16 8 4 4-4 4" />
+                                    <path d="m14 4-4 16" />
+                                </svg>
+                            )}
+                        </div>
+
+                        <h3 class="text-lg font-black leading-8 text-(--text-primary)">
+                            {service.title}
+                        </h3>
+
+                        <p class="mt-3 text-sm leading-7 text-(--text-secondary)">
+                            {service.description}
+                        </p>
+                    </article>
+                ))
+            }
+        </div>
+
+        <div
+            class="mt-10 flex flex-col gap-4 rounded-2xl border border-(--text-secondary)/10 bg-(--bg-secondary) p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8"
+        >
+            <div>
+                <h3 class="text-lg font-black text-(--text-primary)">
+                    نیاز متفاوتی دارید؟
+                </h3>
+
+                <p class="mt-2 text-sm leading-7 text-(--text-secondary)">
+                    اگر برای یک مسئله مشخص به دنبال راهکار هستید، می‌توانیم
+                    نیازتان را بررسی کنیم و درباره مسیر مناسب پیاده‌سازی به
+                    جمع‌بندی برسیم.
+                </p>
+            </div>
+
+            <a
+                href="#contact"
+                class="inline-flex w-fit shrink-0 items-center justify-center gap-2 rounded-lg bg-orange-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-600"
+            >
+                گفت‌وگو درباره پروژه
+                <span aria-hidden="true">←</span>
+            </a>
+        </div>
+    </div>
+</section>

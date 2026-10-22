@@ -1,0 +1,160 @@
+---
+const contacts = [
+    {
+        label: "ایمیل",
+        value: "dev@farzadblack.com",
+        href: "mailto:dev@farzadblack.com",
+        icon: "mail",
+    },
+    {
+        label: "گیت‌هاب",
+        value: "github.com/farzadblack",
+        href: "https://github.com/farzadblack",
+        icon: "github",
+    },
+    {
+        label: "تلگرام",
+        value: "@farzadblack_pv",
+        href: "https://t.me/farzadblack_pv",
+        icon: "telegram",
+    },
+    {
+        label: "بله",
+        value: "@farzadblack_pv",
+        href: "https://ble.ir/farzadblack_pv",
+        icon: "message-circle",
+    },
+];
+---
+
+<section id="contact" class="py-24 md:py-32">
+    <div class="container mx-auto px-6">
+        <div class="grid gap-14 lg:grid-cols-2 lg:gap-20">
+            <div>
+                <h2
+                    class="mb-4 text-4xl font-black leading-tight tracking-tight text-(--text-primary) md:text-5xl"
+                >
+                    راه‌های ارتباطی من
+                </h2>
+
+                <div class="mb-4 h-1.5 w-20 rounded-full bg-orange-500"></div>
+
+                <p
+                    class="max-w-lg text-base font-medium leading-9 text-(--text-secondary) md:text-lg"
+                >
+                    اگر برای اجرای یک پروژه، توسعه یک سامانه یا همکاری در زمینه
+                    نرم‌افزار پیشنهادی دارید، خوشحال می‌شوم با هم صحبت کنیم.
+                </p>
+            </div>
+
+            <div class="grid content-start gap-4 sm:grid-cols-2">
+                {
+                    contacts.map((contact) => (
+                        <a
+                            href={contact.href}
+                            target={
+                                contact.icon === "mail" ? undefined : "_blank"
+                            }
+                            rel={
+                                contact.icon === "mail"
+                                    ? undefined
+                                    : "noopener noreferrer"
+                            }
+                            class="group flex min-w-0 items-center gap-4 rounded-2xl border border-(--border-primary) bg-(--bg-secondary) p-5 transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/50 hover:bg-(--bg-secondary)"
+                        >
+                            <div class="flex size-12 shrink-0 items-center justify-center rounded-xl border border-(--border-primary) text-(--text-secondary) transition-colors duration-300 group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white">
+                                {contact.icon === "mail" && (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="23"
+                                        height="23"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <rect
+                                            x="3"
+                                            y="5"
+                                            width="18"
+                                            height="14"
+                                            rx="2"
+                                        />
+                                        <path d="m3 7 9 6 9-6" />
+                                    </svg>
+                                )}
+
+                                {contact.icon === "github" && (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="23"
+                                        height="23"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg>
+                                )}
+
+                                {contact.icon === "telegram" && (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="23"
+                                        height="23"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="m22 2-7 20-4-9-9-4Z" />
+                                        <path d="M22 2 11 13" />
+                                    </svg>
+                                )}
+
+                                {contact.icon === "message-circle" && (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="23"
+                                        height="23"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8Z" />
+                                    </svg>
+                                )}
+                            </div>
+
+                            <div class="min-w-0">
+                                <p class="mb-2 text-xs font-bold text-(--text-secondary)">
+                                    {contact.label}
+                                </p>
+                                <p
+                                    dir="ltr"
+                                    class="truncate text-left text-sm font-bold text-(--text-primary) transition-colors group-hover:text-orange-500"
+                                >
+                                    {contact.value}
+                                </p>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

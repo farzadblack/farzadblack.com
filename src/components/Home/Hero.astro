@@ -1,0 +1,124 @@
+---
+import { siteData } from "../../data/site-data";
+---
+
+<section
+  id="about"
+  class="relative flex min-h-screen items-center overflow-hidden bg-(--bg-primary) py-15 transition-colors duration-500"
+>
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(249,115,22,0.05),transparent_50%)"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-orange-600/5 blur-[120px]"
+  >
+  </div>
+
+  <div
+    class="container relative z-10 mx-auto grid items-center gap-16 px-6 md:grid-cols-2 md:gap-20"
+  >
+    <div class="hero-enter">
+      <span
+        class="mb-8 inline-block rounded-md border border-orange-500/20 bg-orange-500/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-orange-500"
+      >
+        {siteData.hero.subtitle}
+      </span>
+
+      <h1
+        class="mb-8 text-5xl font-black leading-[0.9] tracking-tighter text-(--text-primary) sm:text-6xl md:text-7xl lg:text-8xl"
+      >
+        {siteData.hero.title}
+      </h1>
+
+      <p
+        class="mb-12 max-w-xl whitespace-pre-line text-lg font-medium leading-9 text-(--text-secondary) md:text-xl md:leading-10"
+      >
+        {siteData.hero.description}
+      </p>
+
+      <div class="flex flex-wrap gap-6">
+        <a
+          href="#contact"
+          class="rounded-lg bg-orange-500 px-10 py-4 text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-orange-500/20 transition-colors hover:bg-orange-600"
+        >
+          {siteData.hero.cta}
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-art-enter relative mx-auto w-full">
+      <div
+        class="relative z-10 aspect-square overflow-hidden rounded-4xl border border-(--border-primary) bg-(--bg-secondary) p-3 shadow-2xl"
+      >
+        <img
+          src={siteData.logo}
+          alt="Farzad Black"
+          width="800"
+          height="800"
+          fetchpriority="high"
+          class="h-full w-full object-cover"
+        />
+      </div>
+
+      {
+        siteData.hero.floatingIcons.map((icon, index) => (
+          <div
+            class:list={[
+              "floating-icon absolute z-20 flex h-16 w-16 items-center justify-center rounded-2xl border border-(--border-primary) bg-(--bg-secondary) p-3 shadow-2xl transition-colors duration-500 sm:h-20 sm:w-20 sm:p-4",
+              icon.className,
+            ]}
+            style={`--float-delay: ${index * 0.4}s; --float-duration: ${4 + index}s`}
+            set:html={icon.svg}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-enter,
+  .hero-art-enter {
+    animation: enter 800ms ease-out both;
+  }
+
+  .hero-art-enter {
+    animation-duration: 1000ms;
+    animation-delay: 100ms;
+  }
+
+  .floating-icon {
+    animation: float var(--float-duration) ease-in-out var(--float-delay)
+      infinite;
+  }
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-enter,
+    .hero-art-enter,
+    .floating-icon {
+      animation: none;
+    }
+  }
+</style>
