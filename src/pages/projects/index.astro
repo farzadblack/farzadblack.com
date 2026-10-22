@@ -1,0 +1,52 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { projects } from "../../data/projects";
+import ImageFrame from "../../components/Global/ImageFrame.astro";
+import ProjectCard from "../../components/Projects/ProjectCard.astro";
+
+const items = [...projects].sort(
+    (a, b) => Number(b.featured) - Number(a.featured),
+);
+---
+
+<Layout
+    title="پروژه‌ها و تجربه‌های اجرایی"
+    description="نمونه‌ای از پروژه‌ها و سامانه‌های نرم‌افزاری فرزاد شریفی؛ از پلتفرم‌های تخصصی تا سامانه‌های سازمانی و راهکارهای خودکارسازی فرایندهای کسب‌وکار."
+>
+    <section class="py-10 md:py-14">
+        <div class="container mx-auto px-6">
+            <div class="mb-12">
+                <h1
+                    class="text-2xl font-black text-(--text-primary) md:text-5xl"
+                >
+                    پروژه‌ها و تجربه‌های اجرایی
+                </h1>
+
+                <div class="mt-5 h-1.5 w-20 rounded-full bg-orange-500"></div>
+
+                <div class="mt-5 space-y-5 leading-8 text-(--text-secondary)">
+                    <p>
+                        در طول فعالیت حرفه‌ای خود، در توسعه سامانه‌ها و محصولات
+                        نرم‌افزاری متنوعی مشارکت داشته‌ام؛ از پلتفرم‌های تخصصی و
+                        سامانه‌های سازمانی تا ابزارهایی برای ساده‌سازی فرایندها
+                        و بهبود عملکرد کسب‌وکارها. هر پروژه نیازمندی‌ها و
+                        ملاحظات فنی خاص خود را داشته و متناسب با همان شرایط
+                        توسعه داده شده است.
+                    </p>
+
+                    <p>
+                        در این صفحه می‌توانید نمونه‌هایی از این پروژه‌ها، کاربرد
+                        آن‌ها و فناوری‌های به‌کاررفته در توسعه‌شان را بررسی
+                        کنید. هدف، ارائه تصویری روشن از تجربه عملی من در طراحی و
+                        پیاده‌سازی راهکارهای نرم‌افزاری و مواجهه با نیازهای
+                        متفاوت پروژه‌هاست.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {items.map((project) => <ProjectCard project={project} />)}
+            </div>
+        </div>
+    </section>
+</Layout>

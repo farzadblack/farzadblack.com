@@ -1,0 +1,266 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { projects } from "../../data/projects";
+import ImageFrame from "../../components/Global/ImageFrame.astro";
+
+export function getStaticPaths() {
+    return projects.map((project) => ({
+        params: { slug: project.slug },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={project.name} description={project.summary}>
+    <article class="bg-(--bg-primary) py-8 sm:py-10 md:py-16">
+        <div class="container mx-auto px-5 md:px-6">
+            <!-- Project header -->
+            <div
+                class="overflow-hidden rounded-2xl border border-(--border-primary) bg-(--bg-secondary)"
+            >
+                <ImageFrame
+                    src={project.image}
+                    alt={project.name}
+                    loading="eager"
+                    overlayClass="aspect-[4/3] sm:aspect-video flex flex-col justify-end p-5 sm:p-8 md:p-10"
+                >
+                    <h1
+                        class="text-2xl font-black leading-tight text-white sm:text-3xl md:text-5xl md:leading-tight"
+                    >
+                        {project.name}
+                    </h1>
+
+                    <div
+                        class="mt-4 h-1 w-14 rounded-full bg-orange-500 sm:w-20"
+                        aria-hidden="true"
+                    >
+                    </div>
+                </ImageFrame>
+
+                <div class="p-5 sm:p-8 md:p-10">
+                    <p
+                        class="text-sm leading-8 text-(--text-secondary) sm:text-base sm:leading-9 md:text-lg"
+                    >
+                        {project.summary}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Project overview -->
+            <div
+                class="mt-10 grid items-start gap-8 md:mt-14 md:grid-cols-[minmax(0,1fr)_280px] md:gap-10 lg:gap-14"
+            >
+                <section class="min-w-0">
+                    <h2
+                        class="text-xl font-black text-(--text-primary) sm:text-2xl"
+                    >
+                        درباره پروژه
+                    </h2>
+
+                    <div
+                        class="mt-5 whitespace-pre-line text-sm leading-8 text-(--text-secondary) sm:text-base sm:leading-9"
+                    >
+                        {project.description}
+                    </div>
+                </section>
+
+                <!-- Project information -->
+                <aside
+                    class="h-fit rounded-2xl border border-(--border-primary) bg-(--bg-secondary) p-5 sm:p-6 md:sticky md:top-24"
+                >
+                    <h2 class="text-lg font-black text-(--text-primary)">
+                        اطلاعات پروژه
+                    </h2>
+
+                    <div class="mt-5">
+                        <h3 class="text-sm font-bold text-(--text-primary)">
+                            فناوری‌های به‌کاررفته
+                        </h3>
+
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            {
+                                project.technologies.map((technology) => (
+                                    <span class="rounded-lg border border-(--border-primary) bg-(--bg-primary) px-3 py-2 text-xs font-medium text-(--text-secondary)">
+                                        {technology}
+                                    </span>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    {
+                        project.url && (
+                            <a
+                                href={project.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3.5 text-sm font-bold text-white transition hover:bg-orange-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+                            >
+                                مشاهده وب‌سایت
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        )
+                    }
+                </aside>
+            </div>
+
+            <!-- Features and responsibilities -->
+            <div
+                class="mt-12 grid gap-10 border-t border-(--border-primary) pt-10 sm:mt-14 sm:pt-12 lg:grid-cols-2 lg:gap-12"
+            >
+                {
+                    project.features.length > 0 && (
+                        <section class="min-w-0">
+                            <div class="flex items-center gap-3">
+                                <span
+                                    class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500"
+                                    aria-hidden="true"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="size-5"
+                                    >
+                                        <rect
+                                            x="3"
+                                            y="3"
+                                            width="7"
+                                            height="7"
+                                            rx="1.5"
+                                        />
+                                        <rect
+                                            x="14"
+                                            y="3"
+                                            width="7"
+                                            height="7"
+                                            rx="1.5"
+                                        />
+                                        <rect
+                                            x="14"
+                                            y="14"
+                                            width="7"
+                                            height="7"
+                                            rx="1.5"
+                                        />
+                                        <rect
+                                            x="3"
+                                            y="14"
+                                            width="7"
+                                            height="7"
+                                            rx="1.5"
+                                        />
+                                    </svg>
+                                </span>
+
+                                <div>
+                                    <h2 class="text-xl font-black text-(--text-primary) sm:text-2xl">
+                                        قابلیت‌های کلیدی
+                                    </h2>
+
+                                    <p class="mt-1 text-xs text-(--text-secondary) sm:text-sm">
+                                        امکانات و بخش‌های اصلی سامانه
+                                    </p>
+                                </div>
+                            </div>
+
+                            <ul class="mt-6 space-y-3">
+                                {project.features.map((feature) => (
+                                    <li class="flex items-start gap-3 text-sm leading-8 text-(--text-secondary) sm:text-base">
+                                        <span
+                                            class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-orange-500/10 text-xs font-bold text-orange-500"
+                                            aria-hidden="true"
+                                        >
+                                            ✓
+                                        </span>
+
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    )
+                }
+
+                {
+                    project.responsibilities.length > 0 && (
+                        <section class="min-w-0">
+                            <div class="flex items-center gap-3">
+                                <span
+                                    class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500"
+                                    aria-hidden="true"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="size-5"
+                                    >
+                                        <rect
+                                            x="3"
+                                            y="7"
+                                            width="18"
+                                            height="14"
+                                            rx="2"
+                                        />
+                                        <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                        <path d="M3 12h18" />
+                                        <path d="M10 12v2h4v-2" />
+                                    </svg>
+                                </span>
+
+                                <div>
+                                    <h2 class="text-xl font-black text-(--text-primary) sm:text-2xl">
+                                        نقش و مسئولیت‌های من
+                                    </h2>
+
+                                    <p class="mt-1 text-xs text-(--text-secondary) sm:text-sm">
+                                        فعالیت‌ها و حوزه‌های مشارکت در پروژه
+                                    </p>
+                                </div>
+                            </div>
+
+                            <ul class="mt-6 space-y-3">
+                                {project.responsibilities.map(
+                                    (responsibility) => (
+                                        <li class="flex items-start gap-3 text-sm leading-8 text-(--text-secondary) sm:text-base">
+                                            <span
+                                                class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-orange-500/10 text-xs font-bold text-orange-500"
+                                                aria-hidden="true"
+                                            >
+                                                ✓
+                                            </span>
+
+                                            <span>{responsibility}</span>
+                                        </li>
+                                    ),
+                                )}
+                            </ul>
+                        </section>
+                    )
+                }
+            </div>
+
+            <!-- Back to projects -->
+            <div class="mt-12 pt-7 sm:mt-16 sm:pt-8">
+                <a
+                    href="/projects/"
+                    class="inline-flex items-center gap-2 text-sm font-bold text-orange-500 transition hover:text-orange-400 sm:text-base"
+                >
+                    <span aria-hidden="true">→</span>
+                    مشاهده سایر پروژه‌ها
+                </a>
+            </div>
+        </div>
+    </article>
+</Layout>

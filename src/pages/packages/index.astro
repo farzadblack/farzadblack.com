@@ -1,0 +1,66 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { packages } from "../../data/packages";
+import ImageFrame from "../../components/Global/ImageFrame.astro";
+import PackageCard from "../../components/Packages/PackageCard.astro";
+
+const items = [...packages].sort(
+    (a, b) => Number(b.featured) - Number(a.featured),
+);
+---
+
+<Layout
+    title="پکیج‌های متن‌باز"
+    description="معرفی پکیج‌های متن‌باز توسعه‌یافته توسط فرزاد شریفی برای پروژه‌های PHP و Laravel؛ شامل ابزارهای احراز هویت، مدیریت دسترسی، ارسال پیامک و ابزارهای کاربردی."
+>
+    <section class="py-10 md:py-14">
+        <div class="container mx-auto px-6">
+            <div class="mb-12">
+                <h1
+                    class="text-3xl font-black text-(--text-primary) md:text-5xl"
+                >
+                    پکیج‌های متن‌باز
+                </h1>
+
+                <div class="mt-5 h-1.5 w-20 rounded-full bg-orange-500"></div>
+
+                <div class="mt-5 space-y-5 leading-8 text-(--text-secondary)">
+                    <p>
+                        توسعه ابزارهای قابل استفاده مجدد، بخشی از رویکرد من به
+                        مهندسی نرم‌افزار است. در جریان توسعه پروژه‌های مختلف، با
+                        نیازهایی مواجه می‌شوم که حل آن‌ها می‌تواند به شکل یک
+                        ابزار مستقل، در پروژه‌های دیگر نیز مفید باشد. به‌جای
+                        تکرار یک راهکار در هر پروژه، تلاش می‌کنم این قابلیت‌ها
+                        را در قالب پکیج‌هایی مستقل و قابل استفاده مجدد توسعه
+                        دهم.
+                    </p>
+
+                    <p>
+                        تمرکز اصلی این مجموعه بر اکوسیستم PHP و Laravel است؛ از
+                        مدیریت احراز هویت و کنترل دسترسی گرفته تا یکپارچه‌سازی
+                        سرویس‌ها و ارائه ابزارهای عمومی موردنیاز در توسعه
+                        نرم‌افزار. هر پکیج با هدف مشخصی طراحی شده تا استفاده از
+                        قابلیت موردنظر را ساده‌تر کند و نیاز به پیاده‌سازی مجدد
+                        راهکارهای مشابه را کاهش دهد.
+                    </p>
+
+                    <p>
+                        این پکیج‌ها علاوه بر استفاده در پروژه‌های خودم، به‌صورت
+                        متن‌باز منتشر شده‌اند تا سایر توسعه‌دهندگان نیز بتوانند
+                        آن‌ها را بررسی کنند، در پروژه‌هایشان به کار بگیرند و در
+                        صورت نیاز در توسعه‌شان مشارکت داشته باشند.
+                    </p>
+
+                    <p>
+                        در ادامه می‌توانید پکیج‌ها را به همراه توضیحات، کاربردها
+                        و مخزن گیت‌هاب هرکدام بررسی کنید.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {items.map((pkg) => <PackageCard pkg={pkg} />)}
+            </div>
+        </div>
+    </section>
+</Layout>

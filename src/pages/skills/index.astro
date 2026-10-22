@@ -1,0 +1,209 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {
+    getSkillLevel,
+    skillTagLabels,
+    skills,
+    type SkillTag,
+} from "../../data/skills";
+import SkillCard from "../../components/Skills/SkillCard.astro";
+
+const filters: {
+    value: string;
+    label: string;
+    tags: SkillTag[];
+}[] = [
+    { value: "all", label: "همه", tags: [] },
+    { value: "backend", label: "بک‌اند", tags: ["backend"] },
+    { value: "frontend", label: "فرانت‌اند", tags: ["frontend"] },
+    { value: "database", label: "پایگاه داده", tags: ["database"] },
+    { value: "language", label: "زبان‌ها", tags: ["language"] },
+    { value: "framework", label: "فریم‌ورک‌ها", tags: ["framework"] },
+    { value: "devops", label: "زیرساخت", tags: ["devops"] },
+    {
+        value: "tools",
+        label: "ابزارها",
+        tags: ["tool", "api", "runtime", "cache"],
+    },
+];
+
+const orderedSkills = [...skills].sort((a, b) => a.order - b.order);
+---
+
+<Layout
+    title="مهارت‌ها و تخصص‌ها"
+    description="آشنایی با مهارت‌ها و تخصص‌های فرزاد شریفی در توسعه فول‌استک، طراحی و پیاده‌سازی بک‌اند، توسعه رابط کاربری، پایگاه داده و زیرساخت نرم‌افزار."
+>
+    <section class="py-10 md:py-14">
+        <div class="container mx-auto px-6">
+            <div class="mb-12">
+                <h1
+                    class="mb-4 text-3xl font-black tracking-tight text-(--text-primary) md:text-4xl"
+                >
+                    مهارت‌های فنی
+                </h1>
+
+                <div class="h-1.5 w-20 rounded-full bg-orange-500"></div>
+
+                <div class="mt-5 space-y-5 leading-8 text-(--text-secondary)">
+                    <p>
+                        تخصص من توسعه فول‌استک نرم‌افزارهای تحت وب است؛ از طراحی
+                        و پیاده‌سازی رابط کاربری با <b>Angular و React</b> تا طراحی
+                        معماری بک‌اند، توسعه API و پیاده‌سازی منطق کسب‌وکار. تمرکز
+                        اصلی من در سمت سرور بر <b>PHP و Laravel</b> است و با استفاده
+                        از <b>Livewire</b>، رابط‌های تعاملی را در کنار بک‌اند و
+                        در چارچوب یک معماری یکپارچه توسعه می‌دهم. در پروژه‌هایی
+                        که به ساختار متفاوتی نیاز دارند نیز از
+                        <b>Node.js و NestJS</b> استفاده می‌کنم. همچنین تجربه کار با
+                        <b>TypeScript</b> به من کمک می‌کند کدهایی ساخت‌یافته‌تر، قابل
+                        نگهداری‌تر و مناسب برای توسعه پروژه‌های بزرگ‌تر بنویسم.
+                    </p>
+
+                    <p>
+                        توسعه نرم‌افزار را به پیاده‌سازی قابلیت‌ها محدود
+                        نمی‌کنم؛ طراحی پایگاه داده، مدیریت داده‌ها و آماده‌سازی
+                        محیط اجرا نیز بخش مهمی از فرایند توسعه هستند. در این
+                        زمینه با
+                        <b>MySQL و PostgreSQL</b> کار می‌کنم و از <b>Redis</b>
+                        برای پیاده‌سازی راهکارهای کش و بهبود عملکرد استفاده می‌کنم.
+                        همچنین تجربه کار با <b>Linux و Docker</b> را در آماده‌سازی
+                        و مدیریت محیط اجرای نرم‌افزار دارم. برای مدیریت نسخه‌ها،
+                        <b>Git</b> و برای آزمایش، طراحی و مستندسازی APIها،
+                        <b>Postman و OpenAPI/Swagger</b> را به کار می‌گیرم.
+                    </p>
+
+                    <p>
+                        در طول فعالیت حرفه‌ای خود، با چندین شرکت در پروژه‌های
+                        متنوع همکاری داشته‌ام و در کنار مسئولیت‌های فنی، در
+                        برنامه‌ریزی پروژه‌ها، هماهنگی فعالیت‌ها و مدیریت تیم نیز
+                        مشارکت کرده‌ام. این تجربه باعث شده است توسعه نرم‌افزار
+                        را علاوه بر جنبه فنی، از منظر نیازمندی‌ها، اولویت‌بندی،
+                        همکاری تیمی و پیشبرد پروژه در مسیر اهداف آن نیز ببینم.
+                    </p>
+
+                    <p>
+                        بخشی دیگر از فعالیت من به توسعه و انتشار پکیج‌های
+                        متن‌باز برای اکوسیستم <b>Laravel</b> اختصاص دارد. این پکیج‌ها
+                        را برای پاسخ‌گویی به نیازهای مشخص توسعه و ارائه راهکارهای
+                        قابل استفاده مجدد طراحی کرده‌ام و در پروژه‌های خود نیز به
+                        کار می‌گیرم. برای مشاهده و بررسی این ابزارها می‌توانید به
+                        صفحه پکیج‌های من مراجعه کنید.
+                        <br />
+                        <a
+                            href="/packages/"
+                            target="_blank"
+                            class="inline-flex items-center gap-2 text-sm font-bold text-orange-500 transition"
+                        >
+                            مشاهده پکیج‌ها <span aria-hidden="true">↗</span>
+                        </a>
+                    </p>
+
+                    <p>
+                        در انتخاب فناوری و طراحی معماری، به یک زبان برنامه‌نویسی
+                        یا فریم‌ورک خاص وابسته نیستم. تصمیم‌گیری را با بررسی
+                        نیازمندی‌ها، محدودیت‌های فنی، پیچیدگی پروژه و چشم‌انداز
+                        توسعه آن آغاز می‌کنم و بر همین اساس، راهکار و استک فنی
+                        مناسب را برمی‌گزینم. هدفم انتخاب فناوری به‌دلیل محبوبیت
+                        یا ترجیح شخصی نیست، بلکه ساخت راهکاری متناسب با مسئله
+                        است که در عمل قابل اتکا باشد و در ادامه مسیر نیز امکان
+                        نگهداری و توسعه آن وجود داشته باشد.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-10 flex flex-wrap gap-3" aria-label="فیلتر مهارت‌ها">
+                {
+                    filters.map((filter, index) => (
+                        <button
+                            type="button"
+                            data-skill-filter={filter.value}
+                            data-filter-tags={filter.tags.join(" ")}
+                            aria-pressed={index === 0 ? "true" : "false"}
+                            class:list={[
+                                "rounded-full border px-4 py-2 text-sm font-bold transition-all duration-300",
+                                index === 0
+                                    ? "border-orange-500 bg-orange-500 text-white"
+                                    : "border-(--border-primary) text-(--text-primary) hover:border-orange-500 hover:text-orange-500",
+                            ]}
+                        >
+                            {filter.label}
+                        </button>
+                    ))
+                }
+            </div>
+
+            <div
+                id="skills-grid"
+                class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            >
+                {
+                    orderedSkills.map((skill) => (
+                        <div
+                            data-skill-card
+                            data-skill-tags={skill.tags.join(" ")}
+                            class="skill-card"
+                        >
+                            <SkillCard skill={skill} showTags />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const filterButtons = document.querySelectorAll<HTMLButtonElement>(
+            "[data-skill-filter]",
+        );
+
+        const skillCards =
+            document.querySelectorAll<HTMLElement>("[data-skill-card]");
+
+        const activeClasses = [
+            "border-orange-500",
+            "bg-orange-500",
+            "text-white",
+        ];
+
+        const inactiveClasses = [
+            "border-(--border-primary)",
+            "text-(--text-primary)",
+        ];
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const filter = button.dataset.skillFilter ?? "all";
+
+                const filterTags = (button.dataset.filterTags ?? "")
+                    .split(" ")
+                    .filter(Boolean);
+
+                filterButtons.forEach((item) => {
+                    const selected = item === button;
+
+                    item.setAttribute("aria-pressed", String(selected));
+
+                    activeClasses.forEach((className) => {
+                        item.classList.toggle(className, selected);
+                    });
+
+                    inactiveClasses.forEach((className) => {
+                        item.classList.toggle(className, !selected);
+                    });
+                });
+
+                skillCards.forEach((card) => {
+                    const tags = (card.dataset.skillTags ?? "")
+                        .split(" ")
+                        .filter(Boolean);
+
+                    const visible =
+                        filter === "all" ||
+                        filterTags.some((tag) => tags.includes(tag));
+
+                    card.hidden = !visible;
+                });
+            });
+        });
+    </script>
+</Layout>
