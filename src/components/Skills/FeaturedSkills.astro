@@ -1,0 +1,47 @@
+---
+import { getSkillLevel, skills } from "../../data/skills";
+import SkillCard from "./SkillCard.astro";
+
+const featuredSkills = [...skills]
+    .filter((skill) => skill.featured)
+    .sort((a, b) => a.order - b.order)
+    .slice(0, 6);
+---
+
+<section
+    id="skills"
+    class="bg-(--bg-primary) py-20 transition-colors duration-500 md:py-24"
+>
+    <div class="container mx-auto px-6">
+        <div class="mb-10 flex flex-wrap items-end justify-between gap-5">
+            <div>
+                <h2
+                    class="mb-4 text-3xl font-black tracking-tight text-(--text-primary) md:text-4xl"
+                >
+                    مهارت‌های تخصصی
+                </h2>
+
+                <div class="h-1.5 w-20 rounded-full bg-orange-500"></div>
+
+                <p class="mt-5 leading-8 text-(--text-secondary)">
+                    در توسعه بخش‌های مختلف نرم‌افزار، از رابط کاربری و تجربه
+                    کاربر تا بک‌اند و پایگاه داده، تجربه دارم. این گستره مهارتی
+                    به من امکان می‌دهد پروژه‌های وب را با دیدی جامع و با استفاده
+                    از فناوری‌های متناسب با نیاز هر پروژه توسعه دهم.
+                </p>
+            </div>
+
+            <a
+                href="/skills/"
+                class="inline-flex items-center gap-2 text-sm font-bold text-orange-500 transition-colors hover:text-orange-400"
+            >
+                مشاهده همه مهارت‌ها
+                <span aria-hidden="true">←</span>
+            </a>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+            {featuredSkills.map((skill) => <SkillCard skill={skill} />)}
+        </div>
+    </div>
+</section>

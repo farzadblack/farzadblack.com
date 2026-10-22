@@ -1,0 +1,48 @@
+---
+import { packages } from "../../data/packages";
+import ImageFrame from "../Global/ImageFrame.astro";
+import PackageCard from "../Packages/PackageCard.astro";
+
+const featuredPackages = packages.filter((pkg) => pkg.featured).slice(0, 3);
+---
+
+<section
+    id="packages"
+    class="bg-(--bg-primary) py-15 transition-colors duration-500"
+    dir="rtl"
+>
+    <div class="container mx-auto px-6">
+        <div
+            class="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
+        >
+            <div>
+                <h2
+                    class="mb-4 text-3xl font-black tracking-tight text-(--text-primary) md:text-4xl"
+                >
+                    پکیج‌های من
+                </h2>
+
+                <div class="h-1.5 w-20 rounded-full bg-orange-500"></div>
+
+                <p class="mt-4 text-base leading-8 text-(--text-secondary)">
+                    مجموعه‌ای از پکیج‌ها و ابزارهای توسعه‌داده‌شده برای PHP و
+                    Laravel با هدف ساده‌سازی پیاده‌سازی قابلیت‌های رایج، استفاده
+                    مجدد از راهکارهای کاربردی و کاهش کدنویسی تکراری در پروژه‌های
+                    نرم‌افزاری.
+                </p>
+            </div>
+
+            <a
+                href="/packages/"
+                class="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg border border-(--text-secondary)/20 px-5 py-3 text-sm font-bold text-(--text-primary) transition hover:border-orange-500 hover:text-orange-500"
+            >
+                مشاهده همه پکیج‌ها
+                <span aria-hidden="true">←</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
+            {featuredPackages.map((pkg) => <PackageCard pkg={pkg} />)}
+        </div>
+    </div>
+</section>
