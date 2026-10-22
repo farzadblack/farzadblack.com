@@ -1,0 +1,19 @@
+---
+import { siteData } from "../data/site-data";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class="mt-auto border-t border-(--border-primary) bg-(--bg-primary) py-8 transition-colors duration-300"
+>
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-8 px-6"
+  >
+    <p
+      class="text-center text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500"
+    >
+      {siteData.footer.copy}
+    </p>
+  </div>
+</footer>
