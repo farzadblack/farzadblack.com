@@ -1,0 +1,44 @@
+---
+interface Props {
+    src: string;
+    alt: string;
+    loading?: "eager" | "lazy";
+    class?: string;
+    imageClass?: string;
+    overlayClass?: string;
+    showFade?: boolean;
+}
+
+const {
+    src,
+    alt,
+    loading = "lazy",
+    class: className = "",
+    imageClass = "",
+    overlayClass = "px-5 pb-4 pt-10",
+    showFade = true,
+} = Astro.props;
+---
+
+<div class:list={["relative overflow-hidden bg-(--bg-secondary)", className]}>
+    <img
+        src={src}
+        alt={alt}
+        class:list={["h-full w-full object-cover", imageClass]}
+        loading={loading}
+        decoding="async"
+    />
+
+    {
+        showFade && (
+            <div
+                class:list={[
+                    "absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,var(--bg-secondary)_0%,color-mix(in_srgb,var(--bg-secondary)_75%,transparent)_15%,color-mix(in_srgb,var(--bg-secondary)_35%,transparent)_30%,transparent_50%)]",
+                    overlayClass,
+                ]}
+            >
+                <slot />
+            </div>
+        )
+    }
+</div>
