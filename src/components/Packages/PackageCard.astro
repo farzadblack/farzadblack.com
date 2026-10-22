@@ -1,0 +1,66 @@
+---
+import type { OpenSourcePackage } from "../../data/packages";
+import ImageFrame from "../Global/ImageFrame.astro";
+
+interface Props {
+    pkg: OpenSourcePackage;
+}
+
+const { pkg } = Astro.props;
+---
+
+<article
+    class="group overflow-hidden rounded-2xl border border-(--text-secondary)/10 bg-(--bg-secondary) transition duration-300 hover:-translate-y-1 hover:border-orange-500/40"
+>
+    <ImageFrame
+        src={pkg.image}
+        alt={`کاور ${pkg.name}`}
+        class="aspect-video shrink-0"
+        imageClass="transition duration-500 group-hover:scale-105"
+    >
+        {
+            pkg.technologies.length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                    {pkg.technologies.slice(0, 3).map((technology) => (
+                        <span class="rounded-md border border-white/10 bg-(--bg-primary)/80 px-2.5 py-1 text-xs font-semibold text-(--text-primary) shadow-sm backdrop-blur-sm">
+                            {technology}
+                        </span>
+                    ))}
+                </div>
+            )
+        }
+    </ImageFrame>
+
+    <div class="flex flex-col p-6">
+        <h3 class="text-xl font-black text-(--text-primary)">
+            {pkg.name}
+        </h3>
+
+        <p class="mt-3 text-sm leading-7 text-(--text-secondary)">
+            {pkg.summary}
+        </p>
+
+        <div
+            class="mt-2 flex flex-wrap items-center gap-4 border-t border-(--text-secondary)/10 pt-4"
+        >
+            <a
+                href={`/packages/${pkg.slug}/`}
+                class="inline-flex items-center gap-2 text-sm font-bold text-orange-500 transition"
+                aria-label={`جزئیات پکیج ${pkg.name}`}
+            >
+                جزئیات پکیج
+                <span aria-hidden="true">←</span>
+            </a>
+
+            <a
+                href={pkg.repository}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-sm font-bold text-(--text-secondary) transition hover:text-(--text-primary)"
+            >
+                گیت‌هاب
+                <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </div>
+</article>

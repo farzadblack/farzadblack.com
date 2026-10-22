@@ -1,0 +1,96 @@
+---
+import type { Skill } from "../../data/skills";
+import { getSkillLevel, skillTagLabels } from "../../data/skills";
+
+interface Props {
+    skill: Skill;
+    showTags?: boolean;
+}
+
+const { skill, showTags = false } = Astro.props;
+---
+
+<article
+    class="rounded-2xl border border-(--border-primary) bg-(--bg-secondary) p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+>
+    <div class="mb-6 flex items-center gap-4">
+        <div
+            class="flex size-14 shrink-0 items-center justify-center rounded-xl border bg-(--bg-primary) p-2.5"
+            style={`border-color: color-mix(in srgb, ${skill.from} 35%, transparent)`}
+        >
+            <img
+                src={`/images/skills/${skill.slug}.svg`}
+                alt={`${skill.name} logo`}
+                width="40"
+                height="40"
+                loading="lazy"
+                decoding="async"
+                class="size-full object-contain"
+            />
+        </div>
+
+        <div class="min-w-0">
+            <h3 class="truncate text-lg font-bold text-(--text-primary)">
+                {skill.name}
+            </h3>
+
+            <p class="mt-1 text-sm font-medium text-(--text-secondary)">
+                {getSkillLevel(skill.level)}
+            </p>
+        </div>
+    </div>
+
+    <div
+        class="h-1.5 w-full overflow-hidden rounded-full bg-(--bg-primary)"
+        role="progressbar"
+        aria-label={`سطح تسلط به ${skill.name}`}
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow={skill.level}
+    >
+        <div
+            class="skill-progress h-full rounded-full"
+            style={`--skill-level: ${skill.level}%; background: linear-gradient(to right, ${skill.from}, ${skill.to});`}
+        >
+        </div>
+    </div>
+
+    {
+        showTags && (
+            <div class="mt-5 flex flex-wrap gap-2">
+                {skill.tags.slice(0, 3).map((tag) => (
+                    <span class="rounded-md border border-white/10 bg-(--bg-primary)/80 px-2.5 py-1 text-xs font-semibold text-(--text-primary) shadow-sm backdrop-blur-sm">
+                        {skillTagLabels[tag]}
+                    </span>
+                ))}
+            </div>
+        )
+    }
+</article>
+
+<style>
+    .skill-progress {
+        width: var(--skill-level);
+        animation: grow 1s ease-out both;
+    }
+
+    .skill-card[hidden] {
+        display: none;
+    }
+
+    @keyframes grow {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: var(--skill-level);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .skill-progress {
+            animation: none;
+        }
+    }
+</style>
