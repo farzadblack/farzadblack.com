@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+    title="صفحه پیدا نشد"
+    description="صفحه موردنظر شما پیدا نشد یا آدرس آن تغییر کرده است."
+>
+    <section class="flex min-h-[75vh] items-center justify-center px-5 py-16">
+        <div class="mx-auto w-full max-w-3xl text-center">
+            <div
+                class="text-[11rem] font-black leading-none tracking-[-0.09em] text-orange-500 sm:text-[16rem] md:text-[20rem]"
+                aria-label="404"
+            >
+                404
+            </div>
+
+            <h1
+                class="mt-8 text-2xl font-black leading-relaxed text-(--text-primary) sm:text-3xl md:text-4xl"
+            >
+                صفحه‌ای که دنبالش هستید پیدا نشد!
+            </h1>
+
+            <p
+                class="mx-auto mt-5 max-w-lg text-sm leading-8 text-(--text-secondary) sm:text-base sm:leading-9"
+            >
+                ممکنه آدرس واردشده اشتباه باشه یا صفحه موردنظر دیگه در دسترس
+                نباشه.
+            </p>
+
+            <a
+                href="/"
+                class="mt-9 inline-flex min-h-14 items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-sm font-bold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-orange-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 sm:text-base"
+            >
+                بازگشت به صفحه اصلی
+            </a>
+        </div>
+    </section>
+</Layout>
