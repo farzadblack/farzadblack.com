@@ -1,0 +1,77 @@
+@import "@fontsource-variable/vazirmatn/wght.css";
+@import "tailwindcss";
+
+@layer base {
+    :root {
+        color-scheme: light;
+
+        --bg-primary: #ffffff;
+        --bg-secondary: #f1f5f9;
+
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+
+        --border-primary: #e2e8f0;
+        --accent-primary: #f97316;
+    }
+
+    :root.dark {
+        color-scheme: dark;
+
+        --bg-primary: #121214;
+        --bg-secondary: #1c1c20;
+
+        --text-primary: #f4f4f5;
+        --text-secondary: #a1a1aa;
+
+        --border-primary: #2e2e33;
+        --accent-primary: #f97316;
+    }
+
+    html {
+        font-family: "Vazirmatn Variable", sans-serif;
+        font-feature-settings: "ss01", "tnum";
+
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+    }
+
+    body {
+        margin: 0;
+        min-width: 320px;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+    }
+
+    ::selection {
+        background-color: var(--accent-primary);
+        color: #ffffff;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
